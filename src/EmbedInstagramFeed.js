@@ -131,6 +131,7 @@ export class EmbedInstagramFeed extends LitElement {
       url: { type: String },
       title: { type: String },
       subtitle: { type: String },
+      showCaption: { type: Boolean },
       data: { type: Object },
     };
   }
@@ -141,6 +142,7 @@ export class EmbedInstagramFeed extends LitElement {
     this.title = "Instagram Feed";
     this.subtitle = "Check out our latest feed from instagram";
     this.data = [];
+    this.showCaption = true;
     this.apiError = null;
   }
 
@@ -173,29 +175,54 @@ export class EmbedInstagramFeed extends LitElement {
           <div class="nc-feed">
             ${this.data.map((item) => {
               if (item.media_type === "IMAGE") {
-                return html`
-                <a target="_blank" rel="noopener" href="${item.permalink}">
-                  <div>
-                    <div class="nc-feed-item">
-                      <img loading="lazy" src="${item.media_url}" alt="${item.caption}" class="nc-insta-image"/>
+                if (this.showCaption) {
+                  return html`
+                  <a target="_blank" rel="noopener" href="${item.permalink}">
+                    <div>
+                      <div class="nc-feed-item">
+                        <img loading="lazy" src="${item.media_url}" alt="${item.caption}" class="nc-insta-image"/>
+                      </div>
+                      <p class="nc-caption">${item.caption}</p>
+                      </div>
+                    </div>
+                  </a>
+                  `;
+                } else {
+                  return html`
+                  <a target="_blank" rel="noopener" href="${item.permalink}">
+                    <div>
+                      <div class="nc-feed-item">
+                        <img loading="lazy" src="${item.media_url}" alt="${item.caption}" class="nc-insta-image"/>
+                      </div>
+                      </div>
+                    </div>
+                  </a>
+                  `;
+                }
+              }
+              if (item.media_type === "VIDEO") {
+                if (this.showCaption) {
+                  return html`
+                  <a target="_blank" rel="noopener" href="${item.permalink}">
+                    <div class="nc-feed-item nc-video">
+                      <img loading="lazy" src="${item.thumbnail_url}" alt="${item.caption}" class="nc-insta-image"/>
+                      <img class="nc-video-player-icon" src="https://api.iconify.design/ph:play-circle-fill.svg" height="24" width="24"/>
                     </div>
                     <p class="nc-caption">${item.caption}</p>
                     </div>
-                  </div>
-                </a>
-                `;
-              }
-              if (item.media_type === "VIDEO") {
-                return html`
-                <a target="_blank" rel="noopener" href="${item.permalink}">
-                  <div class="nc-feed-item nc-video">
-                    <img loading="lazy" src="${item.thumbnail_url}" alt="${item.caption}" class="nc-insta-image"/>
-                    <img class="nc-video-player-icon" src="https://api.iconify.design/ph:play-circle-fill.svg" height="24" width="24"/>
-                  </div>
-                  <p class="nc-caption">${item.caption}</p>
-                  </div>
-                </a>
-                `;
+                  </a>
+                  `;
+                } else {
+                  return html`
+                  <a target="_blank" rel="noopener" href="${item.permalink}">
+                    <div class="nc-feed-item nc-video">
+                      <img loading="lazy" src="${item.thumbnail_url}" alt="${item.caption}" class="nc-insta-image"/>
+                      <img class="nc-video-player-icon" src="https://api.iconify.design/ph:play-circle-fill.svg" height="24" width="24"/>
+                    </div>
+                    </div>
+                  </a>
+                  `;
+                }
               }
             })}
         </div>
