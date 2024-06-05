@@ -175,7 +175,7 @@ export class EmbedInstagramFeed extends LitElement {
           <div class="nc-feed">
             ${this.data.map((item) => {
               if (item.media_type === "IMAGE") {
-                if (this.showCaption) {
+                if (this.showCaption == true) {
                   return html`
                   <a target="_blank" rel="noopener" href="${item.permalink}">
                     <div>
@@ -201,7 +201,7 @@ export class EmbedInstagramFeed extends LitElement {
                 }
               }
               if (item.media_type === "VIDEO") {
-                if (this.showCaption) {
+                if (this.showCaption == true) {
                   return html`
                   <a target="_blank" rel="noopener" href="${item.permalink}">
                     <div class="nc-feed-item nc-video">
