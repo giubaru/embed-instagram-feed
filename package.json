@@ -1,8 +1,8 @@
 {
-  "name": "@nocodeapi/embed-instagram-feed",
+  "name": "@giubarmar/embed-instagram-feed",
   "version": "0.0.2",
   "description": "Webcomponent embed-instagram-feed following open-wc recommendations",
-  "author": "nocodeapi",
+  "author": "giubarmar",
   "license": "MIT",
   "main": "index.js",
   "module": "index.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nocodeapi/embed-instagram-feed.git"
+    "url": "git+https://github.com/giubaru/embed-instagram-feed.git"
   },
   "keywords": [
     "instagram",
@@ -28,7 +28,7 @@
     "data"
   ],
   "bugs": {
-    "url": "https://github.com/nocodeapi/embed-instagram-feed/issues"
+    "url": "https://github.com/giubaru/embed-instagram-feed/issues"
   },
-  "homepage": "https://github.com/nocodeapi/embed-instagram-feed#readme"
+  "homepage": "https://github.com/giubaru/embed-instagram-feed#readme"
 }
