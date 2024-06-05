@@ -131,7 +131,7 @@ export class EmbedInstagramFeed extends LitElement {
       url: { type: String },
       title: { type: String },
       subtitle: { type: String },
-      showCaption: { type: Boolean },
+      showCaption: { type: String },
       data: { type: Object },
     };
   }
@@ -142,7 +142,7 @@ export class EmbedInstagramFeed extends LitElement {
     this.title = "Instagram Feed";
     this.subtitle = "Check out our latest feed from instagram";
     this.data = [];
-    this.showCaption = true;
+    this.showCaption = "true";
     this.apiError = null;
   }
 
@@ -175,7 +175,7 @@ export class EmbedInstagramFeed extends LitElement {
           <div class="nc-feed">
             ${this.data.map((item) => {
               if (item.media_type === "IMAGE") {
-                if (this.showCaption == true) {
+                if (this.showCaption === "true") {
                   return html`
                   <a target="_blank" rel="noopener" href="${item.permalink}">
                     <div>
@@ -201,7 +201,7 @@ export class EmbedInstagramFeed extends LitElement {
                 }
               }
               if (item.media_type === "VIDEO") {
-                if (this.showCaption == true) {
+                if (this.showCaption === "true") {
                   return html`
                   <a target="_blank" rel="noopener" href="${item.permalink}">
                     <div class="nc-feed-item nc-video">
